@@ -1,5 +1,9 @@
 <div align="left">
 <h1>Build wizards using Livewire</h1>
+
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/blazery/laravel-livewire-wizard.svg?style=flat-square)](https://packagist.org/packages/blazery/laravel-livewire-wizard)
+[![Total Downloads](https://img.shields.io/packagist/dt/blazery/laravel-livewire-wizard.svg?style=flat-square)](https://packagist.org/packages/blazery/laravel-livewire-wizard)
+    
 </div>
 
 This package is a fork of [Spaties larave-livewire-wizard package](https://github.com/spatie/laravel-livewire-wizard), and tries to address and issue I ran into while developing using the package. Should you have encountered the same issue, migrating to this package should be swift, and a near drop in replacement.
