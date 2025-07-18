@@ -1,12 +1,12 @@
 {
-    "name": "spatie/laravel-livewire-wizard",
-    "description": "Build wizards using Livewire",
+    "name": "blazery/laravel-livewire-wizard",
+    "description": "Build wizards using Livewire, extended fork",
     "keywords": [
         "spatie",
         "laravel",
         "laravel-livewire-wizard"
     ],
-    "homepage": "https://github.com/spatie/laravel-livewire-wizard",
+    "homepage": "https://github.com/blazery/laravel-livewire-wizard",
     "license": "MIT",
     "authors": [
         {
@@ -17,6 +17,11 @@
         {
             "name": "Rias Van der Veken",
             "email": "rias@spatie.be",
+            "role": "Developer"
+        },
+        {
+            "name": "Jasper Roosenmaallen",
+            "email": "jasperroosenmaallen@gmail.com",
             "role": "Developer"
         }
     ],
