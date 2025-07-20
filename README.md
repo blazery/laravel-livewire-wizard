@@ -9,13 +9,17 @@
 This package is a fork of [Spaties larave-livewire-wizard package](https://github.com/spatie/laravel-livewire-wizard), and tries to address and issue I ran into while developing using the package. Should you have encountered the same issue, migrating to this package should be swift, and a near drop in replacement.
 
 ## The issue
-I like what Livewire offers, Forms, Models and Enums all easily accessable in Livewire/Components. Unfortunately using these in a StepComponent, will break the state management done by the Wizard. Navigating back to a previous step that uses on of these data type will likely throw an Exception.
+I like what Livewire offers: Forms, Models, and Enums, all easily accessible in Livewire/Components. Unfortunately, using these in a StepComponent will break the state management done by the Wizard. Navigating back to a previous step that uses one of these data types will likely throw an Exception.
 
 ```php
-  Cannot assign string to property \StepComponent::$likes_coffee of type \Enums\LikesCoffeeEnum;
+Cannot assign string to property \StepComponent::$likesCoffee of type \Enums\LikesCoffeeEnum;
+``` 
+or 
+```php
+Cannot assign array to property \StepComponent::$form of type \Livewire\Form;
 ```
 
-This is caused because these object don't retain type while traversing the Livewire event system. By default, events get serialized to json, and deserialized by the wizard again. This change uses Livewire/Synthesizers and existing Livewire code to process these events instead. The end result, Forms, Models, Enums and all other Synthesizable data types available in StepComponents.
+This is because these objects don't retain type while traversing the Livewire event system. By default, events get serialized to JSON, and deserialized by the wizard again. This flow of events through the frontend results in data arriving with array or string types, instead of Forms, Arrays, or other synthesizables. This change uses Livewire/Synthesizers, an existing Livewire feature, to process these events instead. The end result, Forms, Models, Enums, and all other Synthesizable data types available in StepComponents.ult, Forms, Models, Enums and all other Synthesizable data types available in StepComponents.
 
 ## Documentation
 
@@ -42,7 +46,7 @@ This package ships with two new classes the replace the old ones.
 
 }
 ```
-Changing these classes is all it takes for your steps and wizard to support a wider variety of datatypes. For backwards compatibility reasons, the original components are still available. StepComponents that don't require Forms or Models can still extend `Spatie\LivewireWizard\Components\StepComponent`, skipping the dehydration of events. This is compatible with the new `HydratedWizardComponent`, so mixed `StepComponent` classes is allowed.
+Changing these classes is all it takes for your steps and wizard to support a wider variety of datatypes. For backwards compatibility reasons, the original components are still available. StepComponents that don't require Forms or Models can still extend `Spatie\LivewireWizard\Components\StepComponent`, skipping the dehydration of events. This is compatible with the new `HydratedWizardComponent`, so mixing `StepComponents` and `DehydratedStepComponent` in a single Wizard is allowed.
 
 ### Alternative method
 The changes made for this new feature are also available as traits. Adding these to existing Wizards and Steps should have the same result.  
